@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.angularjs.org/1.4.1/angular.js"></script>
+  <script>
+    var app = angular.module('RedirectURLApp', []);
+    app.controller('RedirectURLCtrl', function($scope, $window) {
+      $scope.searchstring = '';
+      $scope.RedirectToURL = function() {
+        var host = $window.location.host;
+        var landingUrl = "http://www.google.com/search?q=" + $scope.searchstring;
+        $window.location.href = landingUrl;
+      };
+    });
+  </script>
+</head>
+
+<body ng-app="RedirectURLApp">
+  <div ng-controller="RedirectURLCtrl">
+    <p><input ng-model="searchstring"></p>
+    <a href="#" ng-click="RedirectToURL()">Search!</a>
+  
+</body>
+
+</html>
